@@ -16,6 +16,10 @@ const createServer = async (container) => {
     res.status(200).json({ data: 'Hello world!' });
   });
 
+  app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+  });
+
   app.use((req, res) => {
     res.status(404).json({
       status: 'fail',
