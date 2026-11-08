@@ -41,6 +41,20 @@ describe('HTTP server', () => {
     });
   });
 
+  describe('when GET /health', () => {
+    it('should return 200 and ok status', async () => {
+      // Arrange
+      const app = await createServer({});
+
+      // Action
+      const response = await request(app).get('/health');
+
+      // Assert
+      expect(response.status).toEqual(200);
+      expect(response.body.status).toEqual('ok');
+    });
+  });
+
   describe('when POST /users', () => {
     it('should response 201 and persisted user', async () => {
       // Arrange
